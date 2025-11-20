@@ -1,0 +1,35 @@
+{
+    "name": "Notentool - Notenverwaltung",
+    "short_name": "Notentool",
+    "start_url": ".",
+    "display": "standalone",
+    "background_color": "#FF5E35",
+    "theme_color": "#FF5E35",
+    "description": "Notenverwaltung für Berufsschulen - Referat für Bildung und Sport München",
+    "orientation": "portrait-primary",
+    "prefer_related_applications": false,
+    "icons": [
+        {
+            "src": "icons/Icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png"
+        },
+        {
+            "src": "icons/Icon-maskable-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable"
+        },
+        {
+            "src": "icons/Icon-maskable-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable"
+        }
+    ]
+}
