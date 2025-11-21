@@ -1,4 +1,4 @@
-﻿import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../core/theme/rbs_theme.dart';
@@ -29,72 +29,64 @@ class HomeScreen extends ConsumerWidget {
             ),
             const SizedBox(height: RBSSpacing.xl),
 
-            // Feature Cards (responsive grid; behält Icon-Größe)
-            LayoutBuilder(
-              builder: (context, constraints) {
-                final isNarrow = constraints.maxWidth < 520;
-                final crossAxisCount = isNarrow ? 2 : 3;
-                final spacing = RBSSpacing.md;
-
-                return GridView.count(
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
-                  crossAxisCount: crossAxisCount,
-                  mainAxisSpacing: spacing,
-                  crossAxisSpacing: spacing,
-                  childAspectRatio: 1,
-                  children: [
-                    _buildFeatureCard(
-                      context,
-                      icon: Icons.school_outlined,
-                      title: 'Klassen',
-                      subtitle: 'Verwalten',
-                      color: RBSColors.dynamicRed,
-                      onTap: () {
-                        context.go('/klassen');
-                      },
-                    ),
-                    _buildFeatureCard(
-                      context,
-                      icon: Icons.person_outline,
-                      title: 'Schüler',
-                      subtitle: 'Verwalten',
-                      color: RBSColors.growingElder,
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Schülerverwaltung kommt in v1.0.0'),
-                          ),
-                        );
-                      },
-                    ),
-                    _buildFeatureCard(
-                      context,
-                      icon: Icons.book_outlined,
-                      title: 'Fächer',
-                      subtitle: 'Organisieren',
-                      color: RBSColors.courtGreen,
-                      onTap: () {
-                        context.go('/faecher');
-                      },
-                    ),
-                    _buildFeatureCard(
-                      context,
-                      icon: Icons.assignment_outlined,
-                      title: 'Noten',
-                      subtitle: 'Eintragen',
-                      color: RBSColors.dynamicRed,
-                      onTap: () {
-                        ScaffoldMessenger.of(context).showSnackBar(
-                          const SnackBar(
-                            content: Text('Noteneingabe kommt in v1.0.0'),
-                          ),
-                        );
-                      },
-                    ),
-                  ],
-                );
-              },
+            // Feature Cards
+            Wrap(
+              spacing: RBSSpacing.md,
+              runSpacing: RBSSpacing.md,
+              children: [
+                _buildFeatureCard(
+                  context,
+                  icon: Icons.school_outlined,
+                  title: 'Klassen',
+                  subtitle: 'Verwalten',
+                  color: RBSColors.dynamicRed,
+                  onTap: () {
+                    context.go('/klassen');
+                  },
+                ),
+                _buildFeatureCard(
+                  context,
+                  icon: Icons.person_outline,
+                  title: 'Schüler',
+                  subtitle: 'Verwalten',
+                  color: RBSColors.growingElder,
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Schülerverwaltung kommt in v1.0.0'),
+                      ),
+                    );
+                  },
+                ),
+                _buildFeatureCard(
+                  context,
+                  icon: Icons.book_outlined,
+                  title: 'Fächer',
+                  subtitle: 'Organisieren',
+                  color: RBSColors.courtGreen,
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Fächerverwaltung kommt in v0.2.0'),
+                      ),
+                    );
+                  },
+                ),
+                _buildFeatureCard(
+                  context,
+                  icon: Icons.assignment_outlined,
+                  title: 'Noten',
+                  subtitle: 'Eintragen',
+                  color: RBSColors.dynamicRed,
+                  onTap: () {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Noteneingabe kommt in v1.0.0'),
+                      ),
+                    );
+                  },
+                ),
+              ],
             ),
           ],
         ),
@@ -110,36 +102,40 @@ class HomeScreen extends ConsumerWidget {
     required Color color,
     required VoidCallback onTap,
   }) {
-    return RBSCard(
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(RBSBorderRadius.medium),
-        child: Padding(
-          padding: const EdgeInsets.all(RBSSpacing.md),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 48, color: color),
-              const SizedBox(height: RBSSpacing.sm),
-              Text(
-                title,
-                style: RBSTypography.h4.copyWith(fontSize: 18),
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: RBSSpacing.xs),
-              Text(
-                subtitle,
-                style: RBSTypography.bodySmall.copyWith(
-                  color: RBSColors.textOnLight.withValues(alpha: 0.6),
+    return SizedBox(
+      width: 200,
+      height: 200,
+      child: RBSCard(
+        child: InkWell(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(RBSBorderRadius.medium),
+          child: Padding(
+            padding: const EdgeInsets.all(RBSSpacing.md),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: 48, color: color),
+                const SizedBox(height: RBSSpacing.sm),
+                Text(
+                  title,
+                  style: RBSTypography.h4.copyWith(fontSize: 18),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
+                const SizedBox(height: RBSSpacing.xs),
+                Text(
+                  subtitle,
+                  style: RBSTypography.bodySmall.copyWith(
+                    color: RBSColors.textOnLight.withValues(alpha: 0.6),
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
         ),
       ),

@@ -185,7 +185,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             const SizedBox(height: RBSSpacing.md),
             RBSInput(
               label: 'Passwort',
-              hint: '••••••',
+              hint: 'Mindestens 6 Zeichen',
               controller: passwordController,
               obscureText: true,
               prefixIcon: Icons.lock_outlined,
@@ -394,7 +394,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             // Passwort Input
                             RBSInput(
                               label: 'Passwort',
-                              hint: '••••••',
+                              hint: '••••••••',
                               controller: _passwordController,
                               obscureText: true,
                               prefixIcon: Icons.lock_outlined,
@@ -410,17 +410,27 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                               },
                             ),
 
-                            if (_errorMessage != null)
-                              Padding(
-                                padding: const EdgeInsets.only(top: 16),
+                            if (_errorMessage != null) ...[
+                              const SizedBox(height: RBSSpacing.md),
+                              Container(
+                                padding: const EdgeInsets.all(RBSSpacing.sm),
+                                decoration: BoxDecoration(
+                                  color: RBSColors.error.withValues(alpha: 0.1),
+                                  borderRadius: BorderRadius.circular(
+                                    RBSBorderRadius.small,
+                                  ),
+                                  border: Border.all(
+                                    color: RBSColors.error,
+                                    width: 1,
+                                  ),
+                                ),
                                 child: Text(
-                                  'Fehler: ${_errorMessage!.replaceAll("Exception:", "").replaceAll("FirebaseAuthException:", "").replaceAll("[firebase_auth/", "").replaceAll("]", "").trim()}',
-                                  style: TextStyle(
-                                      color: Theme.of(context).colorScheme.error,
-                                      fontWeight: FontWeight.bold),
-                                  textAlign: TextAlign.center,
+                                  _errorMessage!,
+                                  style: Theme.of(context).textTheme.bodySmall!
+                                      .copyWith(color: RBSColors.error),
                                 ),
                               ),
+                            ],
 
                             const SizedBox(height: RBSSpacing.lg),
 
@@ -441,35 +451,31 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Expanded(
-                                  child: TextButton(
-                                    onPressed: _showRegisterDialog,
-                                    child: Text(
-                                      'Konto erstellen',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .copyWith(
-                                            color: RBSColors.dynamicRed,
-                                            decoration: TextDecoration.underline,
-                                          ),
-                                    ),
+                                TextButton(
+                                  onPressed: _showRegisterDialog,
+                                  child: Text(
+                                    'Konto erstellen',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(
+                                          color: RBSColors.dynamicRed,
+                                          decoration: TextDecoration.underline,
+                                        ),
                                   ),
                                 ),
-                                Expanded(
-                                  child: TextButton(
-                                    onPressed: () =>
-                                        _showPasswordResetDialog(context, ref),
-                                    child: Text(
-                                      'Passwort vergessen?',
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .bodySmall!
-                                          .copyWith(
-                                            color: RBSColors.dynamicRed,
-                                            decoration: TextDecoration.underline,
-                                          ),
-                                    ),
+                                TextButton(
+                                  onPressed: () =>
+                                      _showPasswordResetDialog(context, ref),
+                                  child: Text(
+                                    'Passwort vergessen?',
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .bodySmall!
+                                        .copyWith(
+                                          color: RBSColors.dynamicRed,
+                                          decoration: TextDecoration.underline,
+                                        ),
                                   ),
                                 ),
                               ],
