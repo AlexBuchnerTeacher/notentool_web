@@ -448,8 +448,10 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                             const SizedBox(height: RBSSpacing.md),
 
                             // Registrierung & Passwort vergessen
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            Wrap(
+                              alignment: WrapAlignment.spaceBetween,
+                              runSpacing: RBSSpacing.sm,
+                              spacing: RBSSpacing.md,
                               children: [
                                 TextButton(
                                   onPressed: _showRegisterDialog,
