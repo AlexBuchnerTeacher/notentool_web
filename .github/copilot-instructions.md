@@ -1,7 +1,7 @@
-# Notentool Web - Copilot Instructions
+# InduScore - Copilot Instructions
 
 ## Project Overview
-**notentool_web** is a Flutter web application for managing student grades/marks (Notenverwaltung).
+**InduScore** (formerly notentool_web) is a Flutter web application for managing student grades/marks (Notenverwaltung).
 
 ## Tech Stack
 - **Framework**: Flutter 3.x (Web)

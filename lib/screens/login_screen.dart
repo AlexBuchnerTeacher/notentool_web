@@ -10,7 +10,7 @@ import '../providers/app_providers.dart';
 /// Gemäß RBS Styleguide 1.2:
 /// - Dynamic Red Hintergrund (verpflichtend)
 /// - Keyvisual (45° Pattern)
-/// - Tag "#notentool" rechts oben
+/// - Tag "#induscore" rechts oben
 /// - Headline + Subheadline (Roboto Condensed Bold)
 /// - Weißer Login-Bereich mit RBS-Inputs
 class LoginScreen extends ConsumerStatefulWidget {
@@ -49,7 +49,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
       // Wenn Kürzel (2-4 Buchstaben ohne @), konvertiere zu Email
       final email = input.contains('@')
           ? input
-          : '${input.toLowerCase()}@notentool.de';
+          : '${input.toLowerCase()}@induscore.de';
 
       await authService.signInWithEmailPassword(
         email: email,
@@ -122,7 +122,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   // Kürzel-Konvertierung wie beim Login
                   final email = input.contains('@')
                       ? input
-                      : '${input.toLowerCase()}@notentool.de';
+                      : '${input.toLowerCase()}@induscore.de';
 
                   await authService.sendPasswordResetEmail(email);
 
@@ -233,7 +233,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
               // Wenn Kürzel (2-4 Buchstaben ohne @), konvertiere zu Email
               final email = input.contains('@')
                   ? input
-                  : '${input.toLowerCase()}@notentool.de';
+                  : '${input.toLowerCase()}@induscore.de';
 
               await authService.registerWithEmailPassword(
                 email: email,
@@ -309,11 +309,11 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
             ),
           ),
 
-          // TAG: #notentool (rechts oben)
+          // TAG: #induscore (rechts oben)
           Positioned(
             top: RBSSpacing.lg,
             right: RBSSpacing.lg,
-            child: RBSTag(label: '#notentool', color: RBSColors.white),
+            child: RBSTag(label: '#induscore', color: RBSColors.white),
           ),
 
           // CONTENT: Login-Form
@@ -330,7 +330,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
                   children: [
                     // HEADLINE (Roboto Condensed Bold, weiß)
                     Text(
-                      'Notentool Web',
+                      'InduScore',
                       style: Theme.of(context).textTheme.displayLarge!.copyWith(
                         color: RBSColors.textOnRed,
                         fontSize: isMobile ? 32 : 48,

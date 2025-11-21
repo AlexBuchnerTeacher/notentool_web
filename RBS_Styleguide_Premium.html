@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>InduScore - RBS Styleguide 1.2 - Premium Documentation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --dynamic-red: #FF5E35;
+            --growing-elder: #B3A8CC;
+            --court-green: #8EC641;
+            --sun-yellow: #FFED00;
+            --paper: #F5F5F0;
+            --white: #FFFFFF;
+            --text-light: #333333;
+            --divider: #E0E0E0;
+            --error: #D32F2F;
+            --blue: #2E7BB5;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: var(--paper);
+            color: var(--text-light);
+            line-height: 1.6;
+        }
+
+        .cover {
+            background: var(--dynamic-red);
+            color: var(--white);
+            padding: 80px 40px;
+            text-align: center;
+            page-break-after: always;
+        }
+
+        .cover h1 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 24px;
+        }
+
+        .cover .subtitle {
+            font-size: 24px;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .cover .version {
+            font-size: 18px;
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        .section {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 32px;
+            margin-bottom: 32px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+            page-break-inside: avoid;
+        }
+
+        h1, h2, h3, h4, h5 {
+            font-family: 'Roboto Condensed', sans-serif;
+            font-weight: 700;
+            color: var(--dynamic-red);
+        }
+
+        h1 { font-size: 32px; margin-bottom: 24px; }
+        h2 { font-size: 28px; margin-bottom: 20px; margin-top: 32px; }
+        h3 { font-size: 24px; margin-bottom: 16px; margin-top: 24px; }
+        h4 { font-size: 20px; margin-bottom: 12px; margin-top: 20px; }
+        h5 { font-size: 18px; margin-bottom: 10px; margin-top: 16px; }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .color-card {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+        }
+
+        .color-swatch {
+            height: 120px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .color-info {
+            background: var(--white);
+            padding: 12px;
+        }
+
+        .color-name {
+            font-weight: 600;
+            font-size: 16px;
+            margin-bottom: 4px;
+        }
+
+        .color-hex {
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            color: #666;
+        }
+
+        .typography-sample {
+            margin: 16px 0;
+            padding: 16px;
+            background: var(--paper);
+            border-radius: 8px;
+        }
+
+        .type-label {
+            font-size: 12px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+        }
+
+        .component-preview {
+            margin: 24px 0;
+            padding: 24px;
+            background: var(--paper);
+            border-radius: 8px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+            align-items: center;
+        }
+
+        .rbs-button {
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-family: 'Open Sans', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.2s;
+            min-width: 88px;
+            height: 48px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .rbs-button-filled {
+            background: var(--dynamic-red);
+            color: var(--white);
+            border: none;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.16);
+        }
+
+        .rbs-button-outlined {
+            background: transparent;
+            color: var(--dynamic-red);
+            border: 2px solid var(--dynamic-red);
+        }
+
+        .rbs-button-text {
+            background: transparent;
+            color: var(--dynamic-red);
+            border: none;
+        }
+
+        .rbs-card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 16px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+            margin: 16px 0;
+        }
+
+        .rbs-tag {
+            background: rgba(255, 94, 53, 0.1);
+            color: var(--dynamic-red);
+            border-radius: 16px;
+            padding: 4px 12px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        .rbs-input {
+            width: 100%;
+            max-width: 400px;
+            padding: 16px;
+            border: 1px solid var(--divider);
+            border-radius: 8px;
+            font-size: 16px;
+            font-family: 'Open Sans', sans-serif;
+            margin: 8px 0;
+        }
+
+        .rbs-input:focus {
+            outline: none;
+            border: 2px solid var(--dynamic-red);
+        }
+
+        .rbs-chip {
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            height: 36px;
+            cursor: pointer;
+        }
+
+        .rbs-chip-unselected {
+            background: var(--white);
+            border: 1px solid var(--divider);
+            color: var(--text-light);
+        }
+
+        .rbs-chip-selected {
+            background: var(--dynamic-red);
+            color: var(--white);
+            border: none;
+        }
+
+        .spacing-demo {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+            margin: 24px 0;
+        }
+
+        .spacing-item {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .spacing-box {
+            background: var(--dynamic-red);
+            height: 40px;
+        }
+
+        .spacing-label {
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            min-width: 80px;
+        }
+
+        .grid-demo {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 8px;
+            margin: 24px 0;
+        }
+
+        .grid-cell {
+            background: var(--dynamic-red);
+            height: 40px;
+            border-radius: 4px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            font-size: 12px;
+        }
+
+        .elevation-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .elevation-card {
+            background: var(--white);
+            height: 100px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+        }
+
+        .elevation-0 { box-shadow: none; }
+        .elevation-1 { box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.12); }
+        .elevation-2 { box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.16); }
+        .elevation-4 { box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.20); }
+        .elevation-8 { box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.24); }
+
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+
+        pre {
+            background: #2d2d2d;
+            color: #f8f8f2;
+            padding: 16px;
+            border-radius: 8px;
+            overflow-x: auto;
+            margin: 16px 0;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.4;
+        }
+
+        .dos-donts {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+            margin: 24px 0;
+        }
+
+        .dos, .donts {
+            padding: 20px;
+            border-radius: 8px;
+        }
+
+        .dos {
+            background: rgba(142, 198, 65, 0.1);
+            border-left: 4px solid var(--court-green);
+        }
+
+        .donts {
+            background: rgba(211, 47, 47, 0.1);
+            border-left: 4px solid var(--error);
+        }
+
+        .dos h4, .donts h4 {
+            margin-top: 0;
+        }
+
+        .dos ul li::before {
+            content: "✓ ";
+            color: var(--court-green);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        .donts ul li::before {
+            content: "✗ ";
+            color: var(--error);
+            font-weight: bold;
+            margin-right: 8px;
+        }
+
+        ul {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        li {
+            margin: 8px 0;
+            padding-left: 24px;
+        }
+
+        .table-of-contents {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 24px;
+            margin-bottom: 32px;
+        }
+
+        .table-of-contents ul {
+            list-style: disc;
+            padding-left: 24px;
+        }
+
+        .table-of-contents li {
+            margin: 8px 0;
+        }
+
+        .table-of-contents a {
+            color: var(--dynamic-red);
+            text-decoration: none;
+        }
+
+        .table-of-contents a:hover {
+            text-decoration: underline;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+            .section {
+                box-shadow: none;
+                page-break-inside: avoid;
+            }
+            .cover {
+                page-break-after: always;
+            }
+        }
+
+        .appbar-demo {
+            background: var(--dynamic-red);
+            color: var(--white);
+            padding: 16px 24px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            margin: 16px 0;
+            box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.20);
+        }
+
+        .appbar-demo h5 {
+            color: var(--white);
+            margin: 0;
+        }
+
+        .icon {
+            width: 24px;
+            height: 24px;
+            display: inline-block;
+        }
+    </style>
+</head>
+<body>
+
+<div class="cover">
+    <h1>RBS Styleguide 1.2</h1>
+    <div class="subtitle">Premium Design Documentation</div>
+    <div class="subtitle">InduScore - Referat für Bildung und Sport München</div>
+    <div class="version">Version 1.2 | November 2025</div>
+</div>
+
+<div class="container">
+
+    <div class="table-of-contents">
+        <h2>Inhaltsverzeichnis</h2>
+        <ul>
+            <li><a href="#colors">1. Farbpalette</a></li>
+            <li><a href="#typography">2. Typografie</a></li>
+            <li><a href="#spacing">3. Spacing System</a></li>
+            <li><a href="#components">4. UI Components</a></li>
+            <li><a href="#layout">5. Layout & Grid</a></li>
+            <li><a href="#elevation">6. Elevation & Shadows</a></li>
+            <li><a href="#design-principles">7. Design-Ebenen</a></li>
+            <li><a href="#dos-donts">8. Dos & Don'ts</a></li>
+            <li><a href="#code">9. Code-Referenz</a></li>
+        </ul>
+    </div>
+
+    <div class="section" id="colors">
+        <h1>1. Farbpalette</h1>
+        
+        <h3>Primärfarben</h3>
+        <div class="color-grid">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FF5E35;">Dynamic Red</div>
+                <div class="color-info">
+                    <div class="color-name">Dynamic Red</div>
+                    <div class="color-hex">#FF5E35</div>
+                    <div class="color-hex">RGB(255, 94, 53)</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #B3A8CC;">Growing Elder</div>
+                <div class="color-info">
+                    <div class="color-name">Growing Elder</div>
+                    <div class="color-hex">#B3A8CC</div>
+                    <div class="color-hex">RGB(179, 168, 204)</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #8EC641;">Court Green</div>
+                <div class="color-info">
+                    <div class="color-name">Court Green</div>
+                    <div class="color-hex">#8EC641</div>
+                    <div class="color-hex">RGB(142, 198, 65)</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FFED00; color: #333;">Sun Yellow</div>
+                <div class="color-info">
+                    <div class="color-name">Sun Yellow</div>
+                    <div class="color-hex">#FFED00</div>
+                    <div class="color-hex">RGB(255, 237, 0)</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #F5F5F0; color: #333;">Paper</div>
+                <div class="color-info">
+                    <div class="color-name">Paper</div>
+                    <div class="color-hex">#F5F5F0</div>
+                    <div class="color-hex">RGB(245, 245, 240)</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #2E7BB5;">Blue</div>
+                <div class="color-info">
+                    <div class="color-name">Blue (EGS)</div>
+                    <div class="color-hex">#2E7BB5</div>
+                    <div class="color-hex">RGB(46, 123, 181)</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Unterstützende Farben</h3>
+        <div class="color-grid">
+            <div class="color-card">
+                <div class="color-swatch" style="background: #FFFFFF; color: #333; border: 1px solid #E0E0E0;">White</div>
+                <div class="color-info">
+                    <div class="color-name">White</div>
+                    <div class="color-hex">#FFFFFF</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #333333;">Text on Light</div>
+                <div class="color-info">
+                    <div class="color-name">Text on Light</div>
+                    <div class="color-hex">#333333</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #E0E0E0; color: #333;">Divider</div>
+                <div class="color-info">
+                    <div class="color-name">Divider</div>
+                    <div class="color-hex">#E0E0E0</div>
+                </div>
+            </div>
+            <div class="color-card">
+                <div class="color-swatch" style="background: #D32F2F;">Error</div>
+                <div class="color-info">
+                    <div class="color-name">Error</div>
+                    <div class="color-hex">#D32F2F</div>
+                </div>
+            </div>
+        </div>
+
+        <h3>Verwendung</h3>
+        <ul>
+            <li><strong>Dynamic Red (#FF5E35):</strong> Hauptfarbe für Cover-Ebene (PFLICHT), AppBar, wichtige Buttons, Akzente</li>
+            <li><strong>Growing Elder (#B3A8CC):</strong> Sekundärfarbe für sanfte Akzente, EBT-Klassen</li>
+            <li><strong>Court Green (#8EC641):</strong> Erfolgsfarbe, positive Aktionen, EAT-Klassen</li>
+            <li><strong>Sun Yellow (#FFED00):</strong> Warnungen, wichtige Hinweise</li>
+            <li><strong>Paper (#F5F5F0):</strong> Hintergrundfarbe für Content-Ebene</li>
+            <li><strong>Blue (#2E7BB5):</strong> EGS-Klassen</li>
+        </ul>
+    </div>
+
+    <div class="section" id="typography">
+        <h1>2. Typografie</h1>
+        
+        <h3>Schriftarten</h3>
+        <p><strong>Headlines:</strong> Roboto Condensed Bold (700)<br>
+        <strong>Body Text:</strong> Open Sans Regular (400) / SemiBold (600)</p>
+
+        <h3>Font Sizes & Beispiele</h3>
+
+        <div class="typography-sample">
+            <div class="type-label">H1 - 32px / Bold / Roboto Condensed</div>
+            <h1 style="margin: 0;">Klassenverwaltung München</h1>
+        </div>
+
+        <div class="typography-sample">
+            <div class="type-label">H2 - 28px / Bold / Roboto Condensed</div>
+            <h2 style="margin: 0;">Übersicht Schuljahr 2024/25</h2>
+        </div>
+
+        <div class="typography-sample">
+            <div class="type-label">H3 - 24px / Bold / Roboto Condensed</div>
+            <h3 style="margin: 0; color: var(--text-light);">Berufsgruppen</h3>
+        </div>
+
+        <div class="typography-sample">
+            <div class="type-label">H4 - 20px / Bold / Roboto Condensed</div>
+            <h4 style="margin: 0; color: var(--text-light);">EAT321 - Elektroniker Automatisierungstechnik</h4>
+        </div>
+
+        <div class="typography-sample">
+            <div class="type-label">H5 - 18px / Bold / Roboto Condensed</div>
+            <h5 style="margin: 0; color: var(--text-light);">Leistungsnachweise</h5>
+        </div>
+
+        <div class="typography-sample">
+            <div class="type-label">Body Large - 18px / Open Sans Regular</div>
+            <p style="font-size: 18px; margin: 0;">Das ist ein Beispieltext in Body Large für wichtige Fließtexte und Einleitungen.</p>
+        </div>
+
+        <div class="typography-sample">
+            <div class="type-label">Body Medium - 16px / Open Sans Regular</div>
+            <p style="font-size: 16px; margin: 0;">Das ist der Standard-Body-Text für die meisten Inhalte der Anwendung. Er ist gut lesbar und optimal für längere Textpassagen.</p>
+        </div>
+
+        <div class="typography-sample">
+            <div class="type-label">Body Small - 14px / Open Sans Regular</div>
+            <p style="font-size: 14px; margin: 0;">Kleinerer Body-Text für weniger wichtige Informationen, Untertitel oder Zusatzinformationen.</p>
+        </div>
+
+        <div class="typography-sample">
+            <div class="type-label">Caption - 12px / Open Sans Regular</div>
+            <p style="font-size: 12px; margin: 0; color: #666;">Caption-Text für Metadaten, Timestamps oder sehr kleine Hinweise.</p>
+        </div>
+    </div>
+
+    <div class="section" id="spacing">
+        <h1>3. Spacing System (8dp Grid)</h1>
+        
+        <p>Alle Abstände basieren auf einem 8dp Grid-System für konsistente Layouts.</p>
+
+        <div class="spacing-demo">
+            <div class="spacing-item">
+                <span class="spacing-label">xs - 4px</span>
+                <div class="spacing-box" style="width: 4px;"></div>
+            </div>
+            <div class="spacing-item">
+                <span class="spacing-label">sm - 8px</span>
+                <div class="spacing-box" style="width: 8px;"></div>
+            </div>
+            <div class="spacing-item">
+                <span class="spacing-label">md - 16px</span>
+                <div class="spacing-box" style="width: 16px;"></div>
+            </div>
+            <div class="spacing-item">
+                <span class="spacing-label">lg - 24px</span>
+                <div class="spacing-box" style="width: 24px;"></div>
+            </div>
+            <div class="spacing-item">
+                <span class="spacing-label">xl - 32px</span>
+                <div class="spacing-box" style="width: 32px;"></div>
+            </div>
+            <div class="spacing-item">
+                <span class="spacing-label">xxl - 48px</span>
+                <div class="spacing-box" style="width: 48px;"></div>
+            </div>
+        </div>
+
+        <h3>Anwendung</h3>
+        <ul>
+            <li><strong>xs (4px):</strong> Minimale Abstände, Tag-Padding vertikal</li>
+            <li><strong>sm (8px):</strong> Kleine Abstände zwischen verwandten Elementen, Filter-Chips-Spacing</li>
+            <li><strong>md (16px):</strong> Standard-Spacing, Card-Padding, Section-Padding</li>
+            <li><strong>lg (24px):</strong> Größere Abstände zwischen Sektionen</li>
+            <li><strong>xl (32px):</strong> Große Abstände für visuelle Trennung</li>
+            <li><strong>xxl (48px):</strong> Maximale Abstände für Desktop-Margins</li>
+        </ul>
+    </div>
+
+    <div class="section" id="components">
+        <h1>4. UI Components</h1>
+
+        <h3>AppBar (Cover-Ebene)</h3>
+        <div class="appbar-demo">
+            <span style="font-size: 24px;">☰</span>
+            <h5>Klassenverwaltung</h5>
+            <div style="flex: 1;"></div>
+            <span style="font-size: 24px;">+</span>
+        </div>
+        <p><strong>Specs:</strong> Background: Dynamic Red, Height: 56dp (mobile) / 64dp (desktop), Title: h5 (18px), Icons: 24dp weiß</p>
+
+        <h3>RBS Button</h3>
+        <div class="component-preview">
+            <button class="rbs-button rbs-button-filled">Filled Button</button>
+            <button class="rbs-button rbs-button-outlined">Outlined Button</button>
+            <button class="rbs-button rbs-button-text">Text Button</button>
+        </div>
+        
+        <h4>Specs:</h4>
+        <ul>
+            <li><strong>Filled:</strong> Background: Dynamic Red, Text: Weiß, Elevation: 2 (normal) / 4 (hover)</li>
+            <li><strong>Outlined:</strong> Border: 2px Dynamic Red, Text: Dynamic Red, Background: Transparent</li>
+            <li><strong>Text:</strong> Text: Dynamic Red, No background/border</li>
+            <li><strong>Gemeinsam:</strong> Border Radius: 8dp, Padding: 12px vertical / 16px horizontal, Min Width: 88dp, Height: 48dp</li>
+        </ul>
+
+        <h3>RBS Card</h3>
+        <div class="rbs-card">
+            <h4 style="margin-top: 0;">EAT321</h4>
+            <p style="margin: 0;">Elektroniker für Automatisierungstechnik<br>
+            <span style="font-size: 14px; color: #666;">Schuljahr 2024/25</span></p>
+        </div>
+        <p><strong>Specs:</strong> Background: Weiß, Border Radius: 12dp, Elevation: 1, Padding: 16dp</p>
+
+        <h3>RBS Tag</h3>
+        <div class="component-preview">
+            <span class="rbs-tag">Wichtig</span>
+            <span class="rbs-tag">Neu</span>
+            <span class="rbs-tag">Schuljahr 2024/25</span>
+        </div>
+        <p><strong>Specs:</strong> Background: Dynamic Red (10% opacity), Text: Dynamic Red, Border Radius: 16dp, Padding: 4px vertical / 12px horizontal, Font: 14px</p>
+
+        <h3>RBS Input</h3>
+        <div class="component-preview" style="display: block;">
+            <div style="margin-bottom: 16px;">
+                <label style="display: block; color: var(--court-green); font-weight: 600; margin-bottom: 4px;">Klassenname</label>
+                <input type="text" class="rbs-input" placeholder="EAT321" value="EAT321">
+            </div>
+        </div>
+        <p><strong>Specs:</strong> Border: 1px Divider, Border Radius: 8dp, Padding: 16dp, Label: Court Green, Focus Border: 2px Dynamic Red</p>
+
+        <h3>RBS Filter Chip</h3>
+        <div class="component-preview">
+            <span class="rbs-chip rbs-chip-unselected">2023/24</span>
+            <span class="rbs-chip rbs-chip-selected">2024/25 ✓</span>
+            <span class="rbs-chip rbs-chip-unselected">IE</span>
+            <span class="rbs-chip rbs-chip-selected" style="background: var(--court-green);">EAT ✓</span>
+        </div>
+        <p><strong>Specs:</strong> Border Radius: 20dp, Height: 36dp, Padding: 8px vertical / 12px horizontal<br>
+        <strong>Unselected:</strong> Background: Weiß, Border: 1px Divider<br>
+        <strong>Selected:</strong> Background: Dynamic Red/Custom, Text: Weiß, No border</p>
+
+        <h3>RBS Dialog</h3>
+        <div class="rbs-card" style="max-width: 500px; margin: 16px auto;">
+            <h4 style="margin-top: 0; color: var(--dynamic-red);">Klasse löschen?</h4>
+            <p>Möchten Sie die Klasse "EAT321" wirklich löschen?<br><br>
+            Alle zugehörigen Leistungsnachweise werden ebenfalls gelöscht.</p>
+            <div style="display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px;">
+                <button class="rbs-button rbs-button-text">Abbrechen</button>
+                <button class="rbs-button rbs-button-filled">Löschen</button>
+            </div>
+        </div>
+        <p><strong>Specs:</strong> Background: Weiß, Border Radius: 16dp, Max Width: 560dp, Padding: 24dp, Title: h4 (20px), Actions: Right-aligned mit 8dp Spacing</p>
+    </div>
+
+    <div class="section" id="layout">
+        <h1>5. Layout & Grid</h1>
+
+        <h3>12-Column Grid System</h3>
+        <div class="grid-demo">
+            <div class="grid-cell">1</div>
+            <div class="grid-cell">2</div>
+            <div class="grid-cell">3</div>
+            <div class="grid-cell">4</div>
+            <div class="grid-cell">5</div>
+            <div class="grid-cell">6</div>
+            <div class="grid-cell">7</div>
+            <div class="grid-cell">8</div>
+            <div class="grid-cell">9</div>
+            <div class="grid-cell">10</div>
+            <div class="grid-cell">11</div>
+            <div class="grid-cell">12</div>
+        </div>
+
+        <h3>Breakpoints</h3>
+        <ul>
+            <li><strong>Mobile:</strong> &lt; 600px - 4 Spalten effektiv, 16dp Margin</li>
+            <li><strong>Tablet:</strong> 600px - 900px - 8 Spalten effektiv, 24dp Margin</li>
+            <li><strong>Desktop:</strong> &gt; 900px - 12 Spalten, 48dp Margin</li>
+        </ul>
+
+        <h3>Spacing</h3>
+        <ul>
+            <li><strong>Gutter:</strong> 16dp (mobile), 24dp (desktop)</li>
+            <li><strong>Section Margins:</strong> 24dp - 48dp</li>
+            <li><strong>Content Padding:</strong> 16dp (mobile), 24dp (desktop)</li>
+        </ul>
+    </div>
+
+    <div class="section" id="elevation">
+        <h1>6. Elevation & Shadows</h1>
+
+        <div class="elevation-demo">
+            <div class="elevation-card elevation-0">Level 0<br>Flat</div>
+            <div class="elevation-card elevation-1">Level 1<br>Cards</div>
+            <div class="elevation-card elevation-2">Level 2<br>Buttons</div>
+            <div class="elevation-card elevation-4">Level 4<br>AppBar</div>
+            <div class="elevation-card elevation-8">Level 8<br>Dialogs</div>
+        </div>
+
+        <h3>Verwendung</h3>
+        <ul>
+            <li><strong>Level 0:</strong> Flache Elemente ohne Shadow</li>
+            <li><strong>Level 1:</strong> Cards (0px 1px 3px rgba(0,0,0,0.12))</li>
+            <li><strong>Level 2:</strong> Buttons normal (0px 2px 6px rgba(0,0,0,0.16))</li>
+            <li><strong>Level 4:</strong> AppBar, Buttons hover (0px 4px 12px rgba(0,0,0,0.20))</li>
+            <li><strong>Level 8:</strong> Dialogs, FAB (0px 8px 24px rgba(0,0,0,0.24))</li>
+        </ul>
+    </div>
+
+    <div class="section" id="design-principles">
+        <h1>7. Design-Ebenen</h1>
+
+        <h3>1. Cover-Ebene</h3>
+        <div style="background: var(--dynamic-red); color: var(--white); padding: 24px; border-radius: 8px; margin: 16px 0;">
+            <h4 style="color: var(--white); margin-top: 0;">Cover-Ebene Beispiel</h4>
+            <p style="margin: 0;"><strong>PFLICHT:</strong> Dynamic Red (#FF5E35) als Hintergrundfarbe<br>
+            <strong>Verwendung:</strong> AppBar, Header-Bereiche<br>
+            <strong>Text & Icons:</strong> Weiß (#FFFFFF)<br>
+            <strong>Elevation:</strong> 4-8</p>
+        </div>
+
+        <h3>2. Content-Ebene</h3>
+        <div style="background: var(--paper); padding: 24px; border-radius: 8px; margin: 16px 0;">
+            <h4 style="margin-top: 0;">Content-Ebene Beispiel</h4>
+            <p style="margin: 0;"><strong>Hintergrund:</strong> Paper (#F5F5F0)<br>
+            <strong>Text:</strong> Text on Light (#333333)<br>
+            <strong>Elevation:</strong> 0-2<br>
+            <strong>Cards:</strong> Weiß mit Elevation 1</p>
+        </div>
+
+        <h3>3. Header-Ebene</h3>
+        <div class="appbar-demo">
+            <span style="font-size: 24px;">☰</span>
+            <h5>Header-Ebene</h5>
+        </div>
+        <p><strong>AppBar:</strong> Dynamic Red, Höhe: 56dp (mobile) / 64dp (desktop)</p>
+    </div>
+
+    <div class="section" id="dos-donts">
+        <h1>8. Dos & Don'ts</h1>
+
+        <div class="dos-donts">
+            <div class="dos">
+                <h4>✅ DOs - Best Practices</h4>
+                <ul>
+                    <li>Dynamic Red IMMER für Cover-Ebene verwenden</li>
+                    <li>8dp Grid-System konsequent einhalten</li>
+                    <li>Roboto Condensed Bold für alle Überschriften</li>
+                    <li>Open Sans für Body Text</li>
+                    <li>Mindestens 48dp Touch-Targets für mobile Geräte</li>
+                    <li>Elevation zur visuellen Hierarchie nutzen</li>
+                    <li>Barrierefreiheit: Min. Kontrast 4.5:1</li>
+                    <li>Konsistente Border Radius: 8dp (Buttons, Inputs), 12dp (Cards), 16dp (Dialogs)</li>
+                    <li>AppBar immer mit Elevation 4</li>
+                    <li>Erfolgsfarbe Court Green für positive Aktionen</li>
+                </ul>
+            </div>
+
+            <div class="donts">
+                <h4>❌ DON'Ts - Zu vermeiden</h4>
+                <ul>
+                    <li>Keine anderen Primärfarben als Dynamic Red</li>
+                    <li>Keine gemischten Font-Families (nur Roboto Condensed + Open Sans)</li>
+                    <li>Keine Touch-Targets unter 44dp</li>
+                    <li>Keine inkonsistenten Spacings außerhalb des 8dp Grids</li>
+                    <li>Keine flachen Buttons ohne ausreichenden Kontrast</li>
+                    <li>Keine unleserlichen Text-Farb-Kombinationen</li>
+                    <li>Keine Custom-Farben ohne Abstimmung</li>
+                    <li>Keine unterschiedlichen Border Radius für gleiche Komponententypen</li>
+                    <li>Nicht mehr als 2-3 Elevations gleichzeitig</li>
+                    <li>Keine Shadows auf Paper-Hintergrund ohne Card</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="section" id="code">
+        <h1>9. Code-Referenz</h1>
+
+        <h3>Theme Definition (Dart/Flutter)</h3>
+        <pre>// lib/core/theme/rbs_theme.dart
+
+class RBSColors {
+  // Primärfarben
+  static const dynamicRed = Color(0xFFFF5E35);
+  static const growingElder = Color(0xFFB3A8CC);
+  static const courtGreen = Color(0xFF8EC641);
+  static const sunYellow = Color(0xFFFFED00);
+  static const paper = Color(0xFFF5F5F0);
+  
+  // Unterstützende Farben
+  static const white = Color(0xFFFFFFFF);
+  static const textOnLight = Color(0xFF333333);
+  static const textOnDark = Color(0xFFFFFFFF);
+  static const divider = Color(0xFFE0E0E0);
+  static const error = Color(0xFFD32F2F);
+}
+
+class RBSTypography {
+  // Headlines - Roboto Condensed Bold
+  static final h1 = GoogleFonts.robotoCondensed(
+    fontSize: 32,
+    fontWeight: FontWeight.w700,
+    color: RBSColors.dynamicRed,
+  );
+  
+  static final h2 = GoogleFonts.robotoCondensed(
+    fontSize: 28,
+    fontWeight: FontWeight.w700,
+    color: RBSColors.dynamicRed,
+  );
+  
+  // Body - Open Sans
+  static final bodyMedium = GoogleFonts.openSans(
+    fontSize: 16,
+    fontWeight: FontWeight.w400,
+    color: RBSColors.textOnLight,
+  );
+}
+
+class RBSSpacing {
+  static const double xs = 4;
+  static const double sm = 8;
+  static const double md = 16;
+  static const double lg = 24;
+  static const double xl = 32;
+  static const double xxl = 48;
+}</pre>
+
+        <h3>Button Component</h3>
+        <pre>// lib/core/widgets/rbs_components.dart
+
+class RBSButton extends StatelessWidget {
+  final String label;
+  final VoidCallback? onPressed;
+  final IconData? icon;
+  final bool outlined;
+  final bool textOnly;
+
+  const RBSButton({
+    super.key,
+    required this.label,
+    this.onPressed,
+    this.icon,
+    this.outlined = false,
+    this.textOnly = false,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    if (textOnly) {
+      return TextButton(
+        onPressed: onPressed,
+        style: TextButton.styleFrom(
+          foregroundColor: RBSColors.dynamicRed,
+          padding: const EdgeInsets.symmetric(
+            horizontal: RBSSpacing.md,
+            vertical: RBSSpacing.sm,
+          ),
+        ),
+        child: Text(label),
+      );
+    }
+    
+    if (outlined) {
+      return OutlinedButton.icon(
+        onPressed: onPressed,
+        icon: icon != null ? Icon(icon) : const SizedBox.shrink(),
+        label: Text(label),
+        style: OutlinedButton.styleFrom(
+          foregroundColor: RBSColors.dynamicRed,
+          side: const BorderSide(
+            color: RBSColors.dynamicRed,
+            width: 2,
+          ),
+          padding: const EdgeInsets.symmetric(
+            horizontal: RBSSpacing.md,
+            vertical: 12,
+          ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(8),
+          ),
+        ),
+      );
+    }
+    
+    return ElevatedButton.icon(
+      onPressed: onPressed,
+      icon: icon != null ? Icon(icon) : const SizedBox.shrink(),
+      label: Text(label),
+      style: ElevatedButton.styleFrom(
+        backgroundColor: RBSColors.dynamicRed,
+        foregroundColor: RBSColors.white,
+        elevation: 2,
+        padding: const EdgeInsets.symmetric(
+          horizontal: RBSSpacing.md,
+          vertical: 12,
+        ),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+      ),
+    );
+  }
+}</pre>
+
+        <h3>Card Component</h3>
+        <pre>// lib/core/widgets/rbs_components.dart
+
+class RBSCard extends StatelessWidget {
+  final Widget child;
+  final VoidCallback? onTap;
+
+  const RBSCard({
+    super.key,
+    required this.child,
+    this.onTap,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      color: RBSColors.white,
+      elevation: 1,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(12),
+      ),
+      margin: const EdgeInsets.only(bottom: RBSSpacing.md),
+      child: InkWell(
+        onTap: onTap,
+        borderRadius: BorderRadius.circular(12),
+        child: Padding(
+          padding: const EdgeInsets.all(RBSSpacing.md),
+          child: child,
+        ),
+      ),
+    );
+  }
+}</pre>
+    </div>
+
+    <div class="section">
+        <h2>Projekt Information</h2>
+        <p><strong>Projekt:</strong> InduScore v0.2.0+<br>
+        <strong>Organisation:</strong> Referat für Bildung und Sport München<br>
+        <strong>Styleguide Version:</strong> 1.2<br>
+        <strong>Letzte Aktualisierung:</strong> November 2025<br>
+        <strong>Code Location:</strong> lib/core/theme/rbs_theme.dart, lib/core/widgets/rbs_components.dart</p>
+    </div>
+
+</div>
+
+<script>
+// Smooth scrolling for table of contents
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const target = document.querySelector(this.getAttribute('href'));
+        if (target) {
+            target.scrollIntoView({
+                behavior: 'smooth',
+                block: 'start'
+            });
+        }
+    });
+});
+</script>
+
+</body>
+</html>

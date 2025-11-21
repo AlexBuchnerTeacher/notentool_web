@@ -1,4 +1,4 @@
-# Notentool Web
+# InduScore
 
 **Notenverwaltung für Berufsschulen** - Referat für Bildung und Sport München
 

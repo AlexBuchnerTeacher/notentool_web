@@ -92,7 +92,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Login Screen (Cover-Ebene)** (#18)
   - Dynamic Red Hintergrund (verpflichtend gemäß Styleguide)
   - Keyvisual: 45° Pattern
-  - Tag "#notentool" rechts oben
+  - Tag "#induscore" rechts oben
   - Headline + Subheadline (Roboto Condensed Bold, weiß)
   - Weißer Login-Card mit RBS-konformen Inputs
   - Responsive für Desktop & Mobile

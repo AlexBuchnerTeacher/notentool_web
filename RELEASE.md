@@ -1,4 +1,4 @@
-# Deployment Checklist - Notentool v0.2.0
+# Deployment Checklist - InduScore v0.2.0
 
 ## 📋 Pre-Release Checklist
 

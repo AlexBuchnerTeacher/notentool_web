@@ -11,7 +11,7 @@ class HomeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Notentool')),
+      appBar: AppBar(title: const Text('InduScore')),
       drawer: const RBSDrawer(),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(RBSSpacing.lg),
@@ -19,7 +19,7 @@ class HomeScreen extends ConsumerWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             // Header Section
-            const RBSHeadline(text: 'Notentool', level: RBSHeadlineLevel.h1),
+            const RBSHeadline(text: 'InduScore', level: RBSHeadlineLevel.h1),
             const SizedBox(height: RBSSpacing.xs),
             Text(
               'Berufsschule für Industrieelektronik',

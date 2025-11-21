@@ -1,5 +1,5 @@
-name: notentool_web
-description: "Notenverwaltung für Berufsschulen - Referat für Bildung und Sport München"
+name: induscore
+description: "InduScore - Notenverwaltung für Berufsschulen - Referat für Bildung und Sport München"
 publish_to: 'none'
 
 version: 0.2.0+2

@@ -21,7 +21,7 @@ void main() async {
     debugPrint('Run `flutterfire configure` to set up Firebase');
   }
 
-  runApp(const ProviderScope(child: NotentoolApp()));
+  runApp(const ProviderScope(child: InduScoreApp()));
 }
 
 // Router configuration with auth redirect
@@ -41,13 +41,13 @@ final _router = GoRouter(
   ],
 );
 
-class NotentoolApp extends StatelessWidget {
-  const NotentoolApp({super.key});
+class InduScoreApp extends StatelessWidget {
+  const InduScoreApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(
-      title: 'Notentool Web',
+      title: 'InduScore',
       debugShowCheckedModeBanner: false,
       theme: RBSTheme.lightTheme(), // RBS Styleguide Theme
       themeMode: ThemeMode.light,

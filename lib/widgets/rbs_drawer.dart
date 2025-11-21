@@ -25,7 +25,7 @@ class RBSDrawer extends ConsumerWidget {
                 const Icon(Icons.school, size: 48, color: RBSColors.white),
                 const SizedBox(height: RBSSpacing.sm),
                 Text(
-                  'Notentool',
+                  'InduScore',
                   style: RBSTypography.h2.copyWith(color: RBSColors.white),
                 ),
                 const SizedBox(height: RBSSpacing.xs),
