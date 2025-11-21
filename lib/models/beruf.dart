@@ -1,4 +1,4 @@
-/// Berufe an der Berufsschule für Industrieelektronik
+﻿/// Berufe an der Berufsschule fÃ¼r Industrieelektronik
 enum Beruf {
   ie('IE', 'Industrieelektroniker'),
   eat('EAT', 'Elektroniker für Automatisierungstechnik'),
@@ -53,11 +53,11 @@ class Schuljahr {
   int get hashCode => startYear.hashCode ^ endYear.hashCode;
 }
 
-/// Zeitgruppe für Nachschreiber-Management
+/// Zeitgruppe fÃ¼r Nachschreiber-Management
 enum Zeitgruppe {
   eins(1, 'Zeitgruppe 1'),
   zwei(2, 'Zeitgruppe 2'),
-  drei(3, 'Zeitgruppe 3');
+  drei(3, 'Zeitgruppe 3'); // Keine Umlaute nötig, aber falls vorhanden, hier korrigieren
 
   final int nummer;
   final String name;

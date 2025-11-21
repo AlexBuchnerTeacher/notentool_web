@@ -1,8 +1,8 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 
 enum GradeType {
   test, // Klassenarbeit
-  oral, // Mündlich
+  oral, // MÃ¼ndlich
   homework, // Hausaufgabe
   presentation, // Referat
   other, // Sonstiges
@@ -15,7 +15,7 @@ class Grade {
   final double value; // 1.0 - 6.0 in Germany
   final GradeType type;
   final String? description;
-  final double weight; // Gewichtung (z.B. 2.0 für Klassenarbeiten)
+  final double weight; // Gewichtung (z.B. 2.0 fÃ¼r Klassenarbeiten)
   final DateTime date;
   final DateTime createdAt;
 

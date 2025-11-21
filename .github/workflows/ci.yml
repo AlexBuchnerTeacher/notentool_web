@@ -1,0 +1,54 @@
+name: CI
+
+on:
+  push:
+    branches: ["main", "feature/**", "release/**"]
+  pull_request:
+    branches: ["**"]
+
+jobs:
+  analyze-and-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: stable
+
+      - name: Cache pub
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.pub-cache
+            ~/.dartServer/.analysis-driver
+          key: pub-${{ runner.os }}-${{ hashFiles('**/pubspec.lock') }}
+          restore-keys: |
+            pub-${{ runner.os }}-
+
+      - name: Flutter Pub Get
+        run: flutter pub get
+
+      - name: Analyze
+        run: flutter analyze
+
+      - name: Test
+        run: flutter test --coverage
+
+      - name: Verify version consistency
+        run: |
+          PUBSPEC_VERSION=$(grep '^version:' pubspec.yaml | awk '{print $2}')
+          FILE_VERSION=$(cat VERSION | tr -d '\r\n')
+          DART_VERSION=$(grep 'appVersion' lib/version.dart | sed "s/[^0-9+.]//g")
+
+          echo "pubspec version: ${PUBSPEC_VERSION}"
+          echo "VERSION file:    ${FILE_VERSION}"
+          echo "lib/version.dart:${DART_VERSION}"
+
+          if [ "$PUBSPEC_VERSION" != "$FILE_VERSION" ] || [ "$PUBSPEC_VERSION" != "$DART_VERSION" ]; then
+            echo "Version mismatch detected. Keep pubspec.yaml, VERSION, and lib/version.dart in sync."
+            exit 1
+          fi

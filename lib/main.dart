@@ -6,6 +6,7 @@ import 'firebase_options.dart';
 import 'screens/home_screen.dart';
 import 'screens/login_screen.dart';
 import 'screens/klassen_screen.dart';
+import 'screens/faecher_screen.dart';
 import 'core/theme/rbs_theme.dart';
 
 void main() async {
@@ -37,6 +38,10 @@ final _router = GoRouter(
     GoRoute(
       path: '/klassen',
       builder: (context, state) => const KlassenScreen(),
+    ),
+    GoRoute(
+      path: '/faecher',
+      builder: (context, state) => const FaecherScreen(),
     ),
   ],
 );

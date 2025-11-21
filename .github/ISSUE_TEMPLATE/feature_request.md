@@ -1,38 +1,33 @@
 ---
 name: Feature Request
 about: Schlage eine neue Funktion vor
-title: '[FEATURE] '
+title: "[FEATURE] "
 labels: enhancement
-assignees: ''
+assignees: ""
 
 ---
 
-## 💡 Feature-Beschreibung
-Eine klare und präzise Beschreibung der gewünschten Funktion.
+## Feature-Beschreibung
+Kurz und präzise beschreiben, was gebaut werden soll.
 
-## 🎯 Problem / Use Case
-Welches Problem löst diese Funktion? Warum ist sie wichtig?
+## Problem / Use Case
+Welches Problem wird gelöst und warum ist es wichtig?
 
-**Beispiel**: "Als Lehrer möchte ich [...], damit [...]"
+## Vorgeschlagene Lösung
+Wie sollte es funktionieren? (Flows, Daten, UI-Skizzen)
 
-## 🎨 Vorgeschlagene Lösung
-Wie sollte die Funktion implementiert werden?
+## Alternativen
+Welche anderen Ansätze wurden erwogen?
 
-## 🔄 Alternativen
-Welche alternativen Lösungen wurden in Betracht gezogen?
-
-## 📋 Akzeptanzkriterien
+## Akzeptanzkriterien
 - [ ] Kriterium 1
 - [ ] Kriterium 2
 - [ ] Kriterium 3
 
-## 📸 Mockups / Wireframes
-Falls vorhanden, füge Skizzen oder Designs hinzu.
+## Priorität
+- [ ] Must-Have
+- [ ] Should-Have
+- [ ] Nice-to-Have
 
-## 🏷 Priorität
-- [ ] Must-Have (für nächstes Release)
-- [ ] Should-Have (wünschenswert)
-- [ ] Nice-to-Have (optional)
-
-## 📝 Zusätzlicher Kontext
-Weitere Informationen zur Funktion.
+## Zusätzlicher Kontext
+Mockups, Links, technische Hinweise.

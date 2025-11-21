@@ -29,7 +29,7 @@ class DefaultFirebaseOptions {
     messagingSenderId: '76982828392',
     projectId: 'notentool',
     authDomain: 'notentool-6e2aa.firebaseapp.com',
-    storageBucket: 'notentool.firebasestorage.app',
+    storageBucket: 'notentool.appspot.com',
   );
 
   // Run: flutterfire configure

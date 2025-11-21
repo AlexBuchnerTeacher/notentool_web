@@ -1,4 +1,4 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 import 'beruf.dart';
 
 /// Klasse an der Berufsschule
@@ -28,7 +28,7 @@ class Klasse {
   String get name =>
       '${beruf.code}$jahrgangsstufe${zeitgruppe.nummer}$laufendeNummer';
 
-  /// Vollständiger Name mit Schuljahr: "EAT321 (2024/25)"
+  /// VollstÃ¤ndiger Name mit Schuljahr: "EAT321 (2024/25)"
   String get fullName => '$name ($schuljahr)';
 
   // Firestore Serialization
@@ -77,6 +77,48 @@ class Klasse {
       schuljahr: schuljahr ?? this.schuljahr,
       createdAt: createdAt ?? this.createdAt,
       updatedAt: updatedAt ?? this.updatedAt,
+    );
+  }
+}
+
+/// Parsed representation of a Klassenname (z.B. "EAT321").
+class ParsedKlassenname {
+  final Beruf beruf;
+  final int jahrgangsstufe;
+  final Zeitgruppe zeitgruppe;
+  final int laufendeNummer;
+
+  const ParsedKlassenname({
+    required this.beruf,
+    required this.jahrgangsstufe,
+    required this.zeitgruppe,
+    required this.laufendeNummer,
+  });
+
+  /// Wirft FormatException mit klaren Hinweisen bei ungÃ¼ltigem Format.
+  static ParsedKlassenname parse(String input) {
+    final value = input.trim().toUpperCase();
+    final match = RegExp(r'^(IE|EAT|EBT|EGS)(\d)(\d)(\d)$').firstMatch(value);
+    if (match == null) {
+      throw const FormatException(
+        'Format: <Beruf><Stufe><Zeitgruppe><Nummer>, z.B. EAT321',
+      );
+    }
+
+    final beruf = Beruf.fromCode(match.group(1)!);
+    final stufe = int.parse(match.group(2)!);
+    final zeitgruppe = Zeitgruppe.fromNummer(int.parse(match.group(3)!));
+    final nummer = int.parse(match.group(4)!);
+
+    if (stufe < 1 || stufe > 4) {
+      throw const FormatException('Jahrgangsstufe muss 1-4 sein');
+    }
+
+    return ParsedKlassenname(
+      beruf: beruf,
+      jahrgangsstufe: stufe,
+      zeitgruppe: zeitgruppe,
+      laufendeNummer: nummer,
     );
   }
 }

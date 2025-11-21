@@ -1,10 +1,10 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
+﻿import 'package:cloud_firestore/cloud_firestore.dart';
 
 /// Art des Leistungsnachweises
 enum LeistungsnachweisTyp {
   schulaufgabe('Schulaufgabe', 2.0), // Gewichtung 2:1
   stegreifaufgabe('Stegreifaufgabe', 1.0),
-  muendlich('Mündliche Note', 1.0),
+  muendlich('MÃ¼ndliche Note', 1.0),
   praktisch('Praktische Arbeit', 1.5),
   projekt('Projekt', 2.0),
   sonstiges('Sonstiges', 1.0);
@@ -22,7 +22,7 @@ enum LeistungsnachweisTyp {
   }
 }
 
-/// Leistungsnachweis (Prüfung, Test, mündliche Note, etc.)
+/// Leistungsnachweis (PrÃ¼fung, Test, mÃ¼ndliche Note, etc.)
 class Leistungsnachweis {
   final String id;
   final String subjectId; // Fach
@@ -106,7 +106,7 @@ class Leistungsnachweis {
   }
 }
 
-/// IHK Bayern Notenschlüssel
+/// IHK Bayern NotenschlÃ¼ssel
 class IHKNotenschluessel {
   /// Konvertiert Prozent in IHK-Note
   /// 100-92% = 1, 91-81% = 2, 80-67% = 3, 66-50% = 4, 49-30% = 5, <30% = 6
@@ -126,7 +126,7 @@ class IHKNotenschluessel {
     return prozentZuNote(prozent);
   }
 
-  /// Gibt Notengrenzen als Map zurück
+  /// Gibt Notengrenzen als Map zurÃ¼ck
   static Map<int, String> get notengrenzen => {
     1: '92-100%',
     2: '81-91%',

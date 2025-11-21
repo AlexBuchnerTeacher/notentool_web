@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../core/theme/rbs_theme.dart';
 import '../widgets/rbs_drawer.dart';
@@ -165,7 +165,7 @@ class _KlassenScreenState extends ConsumerState<KlassenScreen> {
             IconButton(
               icon: const Icon(Icons.delete_outline),
               onPressed: () => _confirmDelete(context, klasse),
-              tooltip: 'Löschen',
+              tooltip: 'LÃ¶schen',
             ),
           ],
         ),
@@ -220,17 +220,17 @@ class _KlassenScreenState extends ConsumerState<KlassenScreen> {
                   if (value.length < 5) {
                     return 'Format: z.B. EAT321';
                   }
-                  // Prüfe ob Beruf-Code existiert
+                  // PrÃ¼fe ob Beruf-Code existiert
                   final berufMatch = RegExp(
                     r'^(IE|EAT|EBT|EGS)',
                   ).firstMatch(value);
                   if (berufMatch == null) {
                     return 'Beruf muss IE, EAT, EBT oder EGS sein';
                   }
-                  // Prüfe Ziffern
+                  // PrÃ¼fe Ziffern
                   final rest = value.substring(berufMatch.group(0)!.length);
                   if (rest.length != 3 || int.tryParse(rest) == null) {
-                    return 'Nach Beruf müssen 3 Ziffern folgen';
+                    return 'Nach Beruf mÃ¼ssen 3 Ziffern folgen';
                   }
                   return null;
                 },
@@ -280,21 +280,30 @@ class _KlassenScreenState extends ConsumerState<KlassenScreen> {
             onPressed: () async {
               if (formKey.currentState!.validate()) {
                 try {
-                  // Parse Klassenname (z.B. "EAT321")
-                  final name = klassenNameController.text.trim();
-                  final berufMatch = RegExp(
-                    r'^(IE|EAT|EBT|EGS)',
-                  ).firstMatch(name)!;
-                  final berufCode = berufMatch.group(0)!;
-                  final digits = name.substring(berufCode.length);
+                  ParsedKlassenname parsed;
+                  try {
+                    parsed = ParsedKlassenname.parse(
+                      klassenNameController.text,
+                    );
+                  } on FormatException catch (e) {
+                    if (context.mounted) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(
+                          content: Text(e.message),
+                          backgroundColor: RBSColors.error,
+                        ),
+                      );
+                    }
+                    return;
+                  }
 
                   final firestoreService = ref.read(firestoreServiceProvider);
                   final newKlasse = Klasse(
                     id: klasse?.id ?? '',
-                    beruf: Beruf.fromCode(berufCode),
-                    jahrgangsstufe: int.parse(digits[0]),
-                    zeitgruppe: Zeitgruppe.fromNummer(int.parse(digits[1])),
-                    laufendeNummer: int.parse(digits[2]),
+                    beruf: parsed.beruf,
+                    jahrgangsstufe: parsed.jahrgangsstufe,
+                    zeitgruppe: parsed.zeitgruppe,
+                    laufendeNummer: parsed.laufendeNummer,
                     schuljahr: Schuljahr.fromString(schuljahrController.text),
                     createdAt: klasse?.createdAt ?? DateTime.now(),
                     updatedAt: DateTime.now(),
@@ -339,9 +348,9 @@ class _KlassenScreenState extends ConsumerState<KlassenScreen> {
     showDialog(
       context: context,
       builder: (context) => RBSDialog(
-        title: 'Klasse löschen?',
+        title: 'Klasse lÃ¶schen?',
         content: Text(
-          'Möchten Sie die Klasse "${klasse.name}" wirklich löschen?\n\nAlle zugehörigen Leistungsnachweise werden ebenfalls gelöscht.',
+          'MÃ¶chten Sie die Klasse "${klasse.name}" wirklich lÃ¶schen?\n\nAlle zugehÃ¶rigen Leistungsnachweise werden ebenfalls gelÃ¶scht.',
           style: RBSTypography.bodyMedium,
         ),
         actions: [
@@ -350,7 +359,7 @@ class _KlassenScreenState extends ConsumerState<KlassenScreen> {
             child: const Text('Abbrechen'),
           ),
           RBSButton(
-            label: 'Löschen',
+            label: 'LÃ¶schen',
             onPressed: () async {
               try {
                 final firestoreService = ref.read(firestoreServiceProvider);
@@ -360,7 +369,7 @@ class _KlassenScreenState extends ConsumerState<KlassenScreen> {
                   Navigator.pop(context);
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
-                      content: const Text('Klasse gelöscht'),
+                      content: const Text('Klasse gelÃ¶scht'),
                       backgroundColor: RBSColors.courtGreen,
                     ),
                   );

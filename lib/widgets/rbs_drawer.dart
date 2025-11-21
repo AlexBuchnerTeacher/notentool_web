@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../core/theme/rbs_theme.dart';
 import '../providers/app_providers.dart';
+import '../version.dart';
 
 class RBSDrawer extends ConsumerWidget {
   const RBSDrawer({super.key});
@@ -71,7 +72,6 @@ class RBSDrawer extends ConsumerWidget {
                   icon: Icons.book_outlined,
                   title: 'Fächer',
                   route: '/faecher',
-                  disabled: true,
                 ),
                 _buildDrawerItem(
                   context,
@@ -111,6 +111,22 @@ class RBSDrawer extends ConsumerWidget {
                 context.go('/login');
               }
             },
+          ),
+          Padding(
+            padding: const EdgeInsets.only(
+              left: RBSSpacing.lg,
+              right: RBSSpacing.lg,
+              bottom: RBSSpacing.sm,
+            ),
+            child: Align(
+              alignment: Alignment.centerLeft,
+              child: Text(
+                'Version $appVersion',
+                style: RBSTypography.bodySmall.copyWith(
+                  color: RBSColors.textOnLight.withValues(alpha: 0.5),
+                ),
+              ),
+            ),
           ),
           const SizedBox(height: RBSSpacing.sm),
         ],

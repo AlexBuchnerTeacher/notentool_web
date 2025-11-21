@@ -5,17 +5,36 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+
+## [0.3.0] - 2025-11-21
+
+### Added
+- **Fächerverwaltung** (#8)
+  - `FachTyp` Enum: Allgemeinbildend, Beruflich, Lernfeld
+  - Subject Model erweitert: typ, berufe, wochenstunden, credits
+  - FaecherScreen mit CRUD-Funktionalität
+  - Filter nach Beruf und Fachtyp
+  - Farbcodierung nach Beruf (IE=Red, EAT=Green, EBT=Elder, EGS=Blue)
+  - Detailanzeige: Wochenstunden, Credits, zugeordnete Berufe
+  - RBS Styleguide 1.2 Design durchgängig
+
+### Fixed
+- Umlaut- und Encoding-Probleme in Enum und UI
+- Farbränder für Beruf-Chips
+- Save-Dialog: Fehlerhandling, Dialog-Schließung, Firestore-Integration
+
+### Changed
+- Google Fonts (Roboto) für bessere Umlaut-Darstellung
+- Firestore-Regeln für Auth-User angepasst
 
 ### Geplant für v1.0.0
 - Schülerverwaltung mit CSV-Import (#9)
-- Fächerverwaltung (#8)
 - Leistungsnachweise & Noteneingabe (#10)
 - Automatische Zeugnisnoten-Berechnung (#11)
 - Nachschreiber-Management (#12)
 - PDF-Export (#13)
 
----
+----
 
 ## [0.2.0] - 2025-11-20
 
