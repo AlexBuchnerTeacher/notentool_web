@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:go_router/go_router.dart';
 import '../core/theme/rbs_theme.dart';
@@ -22,7 +22,7 @@ class HomeScreen extends ConsumerWidget {
             const RBSHeadline(text: 'InduScore', level: RBSHeadlineLevel.h1),
             const SizedBox(height: RBSSpacing.xs),
             Text(
-              'Berufsschule für Industrieelektronik',
+              'Berufsschule fÃ¼r Industrieelektronik',
               style: RBSTypography.bodyLarge.copyWith(
                 color: RBSColors.textOnLight.withValues(alpha: 0.6),
               ),
@@ -58,13 +58,13 @@ class HomeScreen extends ConsumerWidget {
                     _buildFeatureCard(
                       context,
                       icon: Icons.person_outline,
-                      title: 'Schüler',
+                      title: 'SchÃ¼ler',
                       subtitle: 'Verwalten',
                       color: RBSColors.growingElder,
                       onTap: () {
                         ScaffoldMessenger.of(context).showSnackBar(
                           const SnackBar(
-                            content: Text('Schülerverwaltung kommt in v1.0.0'),
+                            content: Text('SchÃ¼lerverwaltung kommt in v1.0.0'),
                           ),
                         );
                       },
@@ -72,7 +72,7 @@ class HomeScreen extends ConsumerWidget {
                     _buildFeatureCard(
                       context,
                       icon: Icons.book_outlined,
-                      title: 'Fächer',
+                      title: 'FÃ¤cher',
                       subtitle: 'Organisieren',
                       color: RBSColors.courtGreen,
                       onTap: () {
@@ -117,33 +117,39 @@ class HomeScreen extends ConsumerWidget {
         borderRadius: BorderRadius.circular(RBSBorderRadius.medium),
         child: Padding(
           padding: const EdgeInsets.all(RBSSpacing.md),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              Icon(icon, size: 48, color: color),
-              const SizedBox(height: RBSSpacing.sm),
-              Text(
-                title,
-                style: RBSTypography.h4.copyWith(fontSize: 18),
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-              ),
-              const SizedBox(height: RBSSpacing.xs),
-              Text(
-                subtitle,
-                style: RBSTypography.bodySmall.copyWith(
-                  color: RBSColors.textOnLight.withValues(alpha: 0.6),
+          child: FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Icon(icon, size: 48, color: color),
+                const SizedBox(height: RBSSpacing.sm),
+                Text(
+                  title,
+                  style: RBSTypography.h4.copyWith(fontSize: 18),
+                  textAlign: TextAlign.center,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
                 ),
-                textAlign: TextAlign.center,
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-              ),
-            ],
+                const SizedBox(height: RBSSpacing.xs),
+                Text(
+                  subtitle,
+                  style: RBSTypography.bodySmall.copyWith(
+                    color: RBSColors.textOnLight.withValues(alpha: 0.6),
+                  ),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ],
+            ),
           ),
         ),
       ),
     );
   }
 }
+
+
+
